@@ -1,0 +1,30 @@
+{
+    "name": "",
+    "version": "",
+    "description": "",
+    "main": ,
+    "directories": {
+      "lib": "lib",
+      "test": "test"
+    },
+    "scripts": {
+      "test": ""
+    },
+    "repository": {
+      "type": "git",
+      "url": ""
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": ""
+    },
+    "homepage": "",
+    "dependencies": {
+      "inquirer": ""
+    },
+    "devDependencies": {
+      "jest": ""
+    }
+  }
+  
