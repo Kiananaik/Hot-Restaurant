@@ -2,7 +2,7 @@ const express = require("express")
 const path = require("path")
 
 var app = express()
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended:true }))
 app.use(express.json())
@@ -21,7 +21,7 @@ app.get("/reserve", function(req,res) {
 })
 
 app.get("/tables", function(req, res) {
-    res.sendFile(oath.join(__dirname, "tables.html"))
+    res.sendFile(path.join(__dirname, "tables.html"))
 })
 
 app.get("/api/reservations", function(req,res) {
