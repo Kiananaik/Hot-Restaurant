@@ -22,13 +22,14 @@
 
     <div class="container">
       <div class="jumbotron">
-        <h1>Hot Restaurant</h1>
-        <h3>Group Practice for Express.js</h3>
+        <h1 class="text-center"><span class="glyphicon glyphicon-fire"></span> Hot Restaurant</h1>
         <hr>
-        <a href="/add"><button class="btn btn-danger btn-lg"><span class="fa fa-plus"></span> Add New
-            Character</button></a>
-        <a href="/api/characters"><button class="btn btn-danger btn-lg"><span
-            class="fa fa-eye"></span> All Characters</button></a>
+        <h2 class="text-center">We only have 5 tables! Book your seat before they all are gone!</h2>
+        <br>
+      
+        <div class="text-center">
+          <a href="/tables"><button type="button" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list-alt"></span> View Tables</button></a>
+          <a href="/reserve"><button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-credit-card"></span> Make Reservation</button></a>
       </div>
 
       <div class="row">
@@ -37,15 +38,15 @@
 
           <div class="card mb-4">
             <div class="card-header">
-              <h3><strong>Character Search</strong></h3>
+              <h3><strong>Table Search</strong></h3>
             </div>
             <div class="card-body">
-              <input type="text" id="character-search" class="form-control">
+              <input type="text" id="table-search" class="form-control">
               <br>
               <div class="text-right">
                 <button type="submit" class="btn btn-primary btn-md" id="search-btn"><span
                   class="fa fa-search"></span> Search
-                  Your Feelings. You know it is true.</button>
+                </button>
 
               </div>
             </div>
@@ -53,15 +54,17 @@
 
           <div class="card">
             <div class="card-header">
-              <h3><strong>Character Statistics</strong></h3>
+              <h3><strong>Table Information</strong></h3>
             </div>
 
             <div class="card-body">
-              <h2 id="name">Yoda</h2>
+              <h2 id="name">Table #1</h2>
               <div id="stats">
-                <h3><strong>Role:</strong> <span id="role">Jedi Master</span></h3>
-                <h3><strong>Age:</strong> <span id="age">900</span></h3>
-                <h3><strong>Force Points:</strong> <span id="force-points">2000</span></h3>
+                <h3><strong>ID:</strong> <span id="ID">001</span></h3>
+                <h3><strong>Name:</strong> <span id="name">Kiba Kallali</span></h3>
+                <h3><strong>Email:</strong> <span id="email">booyouho@hotmail.com</span></h3>
+                <h3><strong>Phone:</strong> <span id="phone">(800) 000 -0000</span></h3>
+
               </div>
             </div>
           </div>
@@ -69,29 +72,36 @@
       </div>
     </div>
 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
       $("#search-btn").on("click", function() {
-        var searchedCharacter = $("#character-search").val().trim();
+        var searchedCharacter = $("#table-search").val().trim();
 
-        // Using a RegEx Pattern to remove spaces from searchedCharacter
+        // Using a RegEx Pattern to remove spaces from searchedTable
         // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-        searchedCharacter = searchedCharacter.replace(/\s+/g, "").toLowerCase();
+        searchedTable = searchedTable.replace(/\s+/g, "").toLowerCase();
 
-        $.get("/api/characters/" + searchedCharacter, function(data) {
+        $.get("/api/tables/" + searchedTable, function(data) {
           console.log(data);
           if (data) {
             $("#stats").show();
+            $("#ID").text(data.ID);
             $("#name").text(data.name);
-            $("#role").text(data.role);
-            $("#age").text(data.age);
-            $("#force-points").text(data.forcePoints);
+            $("#email").text(data.email);
+            $("#phone").text(data.phone);
           } else {
             $("#name").text(
-              "The force is not strong with this one. Your character was not found.");
+              "You may have mistyped, your table was not found... Try again <3");
             $("#stats").hide();
           }
         });
       });
-    </script>
+    </script> -->
+
+    <footer class="footer">
+      <div class="container">
+        <p><a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a></p>
+      </div>
+    </footer>
+    
   </body>
 </html>
