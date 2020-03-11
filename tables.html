@@ -3,12 +3,21 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>Tables Page</title>
+        <meta table="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta table="description" content="">
+        <meta table="author" content="Allen Binayao, Chace Tunnell, Edwin Ramos, Kristen Evans, Kiana N. G. Darlington, and Bootstrap contributors">
+        <meta table="generator" content="Jekyll v3.8.6">
     
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <title>Restaurant Activity - Tables Page</title>
     
-    </head>
+        <!-- Latest compiled and minified CSS & JS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        
+        <link rel="Stylesheet" type="text/css" href="assets/style.css">
+      </head>
 
 <body>
 
@@ -48,6 +57,31 @@
                     </div>
                 </div>
             </div>
+
+            <script type="text/javascript">
+                $("#search-btn").on("click", function() {
+                  var searchedCharacter = $("#table-search").val().trim();
+          
+                  // Using a RegEx Pattern to remove spaces from searchedTable
+                  // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+                  searchedTable = searchedTable.replace(/\s+/g, "").toLowerCase();
+          
+                  $.get("/api/tables/" + searchedTable, function(data) {
+                    console.log(data);
+                    if (data) {
+                      $("#stats").show();
+                      $("#ID").text(data.ID);
+                      $("#name").text(data.name);
+                      $("#email").text(data.email);
+                      $("#phone").text(data.phone);
+                    } else {
+                      $("#name").text(
+                        "You may have mistyped, your table was not found... Try again <3");
+                      $("#stats").hide();
+                    }
+                  });
+                });
+              </script>
     
     
             <footer class="footer">

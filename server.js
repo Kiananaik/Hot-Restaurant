@@ -2,7 +2,7 @@ const express = require("express")
 const path = require("path")
 
 var app = express()
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended:true }))
 app.use(express.json())
@@ -21,14 +21,29 @@ app.get("/reserve", function(req,res) {
 })
 
 app.get("/tables", function(req, res) {
-    res.sendFile(oath.join(__dirname, "tables.html"))
+    res.sendFile(path.join(__dirname, "tables.html"))
 })
 
-app.get("/api/reservations", function(req,res) {
+app.get("/api/tables", function(req,res) {
     return res.json(tables)
 })
 
 app.get("/api/waitlist", function(req, res) {
-    return res.jsoom(waitList)
+    return res.json(waitList)
+})
+//-------------------------------------------
+app.post("/api/tables", function(req,res) {
+    var newReservation = req.body
+if(tables.length <= 5){
+    tables.push(newReservation);
+}
+else{
+    waitList.push(newReservation)
+}
+res.json(newReservation)
+    
 })
 
+app.listen(PORT, function() {
+    console.log("App listening on localhost:" + PORT);
+})

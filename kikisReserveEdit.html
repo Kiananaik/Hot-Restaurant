@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
   <head>
     <meta charset="UTF-8">
     <meta table="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,7 +17,6 @@
     
     <link rel="Stylesheet" type="text/css" href="assets/style.css">
   </head>
-
   <body>
 
     <div class="container">
@@ -32,39 +31,50 @@
           <a href="/reserve"><button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-credit-card"></span> Make Reservation</button></a>
       </div>
 
+      </div>
+
       <div class="row">
 
         <div class="col-12">
 
-          <div class="card mb-4">
-            <div class="card-header">
-              <h3><strong>Table Search</strong></h3>
-            </div>
-            <div class="card-body">
-              <input type="text" id="table-search" class="form-control">
-              <br>
-              <div class="text-right">
-                <button type="submit" class="btn btn-primary btn-md" id="search-btn"><span
-                  class="fa fa-search"></span> Search
-                </button>
-
-              </div>
-            </div>
-          </div>
-
           <div class="card">
             <div class="card-header">
-              <h3><strong>Table Information</strong></h3>
+              <h3><strong>Add a Table Reservation</strong></h3>
             </div>
-
             <div class="card-body">
-              <h2 id="name">Table #1</h2>
-              <div id="stats">
-                <h3><strong>ID:</strong> <span id="ID">001</span></h3>
-                <h3><strong>Name:</strong> <span id="name">Kiba Kallali</span></h3>
-                <h3><strong>Email:</strong> <span id="email">booyouho@hotmail.com</span></h3>
-                <h3><strong>Phone:</strong> <span id="phone">(800) 000 -0000</span></h3>
+              <form method="POST" role="form">
 
+                <div class="form-group">
+                  <label for="table">table</label>
+                  <input type="text" class="form-control" id="table">
+                </div>
+
+                <div class="form-group">
+                  <label for="ID">Role</label>
+                  <input type="text" class="form-control" id="ID">
+                </div>
+
+                <div class="form-group">
+                  <label for="name">Age</label>
+                  <input type="text" class="form-control" id="name">
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="text" class="form-control" id="email">
+                </div>
+
+                <div class="form-group">
+                  <label for="phone">Phone</label>
+                  <input type="text" class="form-control" id="phone">
+                </div>
+
+              </form>
+
+              <br>
+              
+              <div class="text-right">
+                <button type="submit" class="btn btn-primary btn-md" id="add-btn"><span class="fa fa-fire"></span> Add a table reservation?</button>
               </div>
             </div>
           </div>
@@ -73,28 +83,27 @@
     </div>
 
     <!-- <script type="text/javascript">
-      $("#search-btn").on("click", function() {
-        var searchedCharacter = $("#table-search").val().trim();
 
-        // Using a RegEx Pattern to remove spaces from searchedTable
-        // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-        searchedTable = searchedTable.replace(/\s+/g, "").toLowerCase();
+      // JAVASCRIPT EXAMPLE FROM STARWARS
 
-        $.get("/api/tables/" + searchedTable, function(data) {
-          console.log(data);
-          if (data) {
-            $("#stats").show();
-            $("#ID").text(data.ID);
-            $("#name").text(data.name);
-            $("#email").text(data.email);
-            $("#phone").text(data.phone);
-          } else {
-            $("#name").text(
-              "You may have mistyped, your table was not found... Try again <3");
-            $("#stats").hide();
-          }
+      $("#add-btn").on("click", function(event) {
+        event.preventDefault();
+        var newCharacter = {
+          table: $("#ID").val().trim(),
+          name: $("#name").val().trim(),
+          email: $("#email").val().trim(),
+          phone: $("#phone").val().trim(),
+
+        };
+
+        
+        $.post("/api/tables", newTable)
+          .then(function(data) {
+            console.log("add.html", data);
+            alert("Adding...");
+          });
         });
-      });
+
     </script> -->
 
     <footer class="footer">
@@ -102,6 +111,6 @@
         <p><a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a></p>
       </div>
     </footer>
-    
+
   </body>
 </html>
