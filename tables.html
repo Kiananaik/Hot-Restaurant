@@ -48,6 +48,31 @@
                     </div>
                 </div>
             </div>
+
+            <script type="text/javascript">
+                $("#search-btn").on("click", function() {
+                  var searchedCharacter = $("#table-search").val().trim();
+          
+                  // Using a RegEx Pattern to remove spaces from searchedTable
+                  // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+                  searchedTable = searchedTable.replace(/\s+/g, "").toLowerCase();
+          
+                  $.get("/api/tables/" + searchedTable, function(data) {
+                    console.log(data);
+                    if (data) {
+                      $("#stats").show();
+                      $("#ID").text(data.ID);
+                      $("#name").text(data.name);
+                      $("#email").text(data.email);
+                      $("#phone").text(data.phone);
+                    } else {
+                      $("#name").text(
+                        "You may have mistyped, your table was not found... Try again <3");
+                      $("#stats").hide();
+                    }
+                  });
+                });
+              </script>
     
     
             <footer class="footer">
