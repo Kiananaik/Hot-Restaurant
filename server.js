@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended:true }))
 app.use(express.json())
 
 
-const reservations = [];
+const tables = [];
 const waitList = [];
 
 
@@ -25,7 +25,7 @@ app.get("/tables", function(req, res) {
 })
 
 app.get("/api/reservations", function(req,res) {
-    return res.json(reservations)
+    return res.json(tables)
 })
 
 app.get("/api/waitlist", function(req, res) {
