@@ -32,3 +32,22 @@ app.get("/api/waitlist", function(req, res) {
     return res.jsoom(waitList)
 })
 
+app.post("/reserve", function(req, res) { 
+    var newCustomer = req.body;
+  
+  
+    console.log(newCustomer);
+  
+    if (tables.length <= 4) {
+        tables.push(newCustomer);
+    }
+    else {
+        waitList.push(newCustomer);
+    };
+  
+    res.json(newCustomer);
+  });
+
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
