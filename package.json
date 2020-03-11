@@ -8,8 +8,9 @@
   },
   "devDependencies": {},
   "scripts": {
-
+    "start": "node server.js",
+    "watch": "nodemon server.js"
   },
-  "author": "",
+  "author": "Edwin, Allan, Kris, Kiki,",
   "license": "ISC"
 }
