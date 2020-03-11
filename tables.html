@@ -3,14 +3,23 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>Tables Page</title>
+        <meta table="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta table="description" content="">
+        <meta table="author" content="Allen Binayao, Chace Tunnell, Edwin Ramos, Kristen Evans, Kiana N. G. Darlington, and Bootstrap contributors">
+        <meta table="generator" content="Jekyll v3.8.6">
     
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <title>Restaurant Activity - Tables Page</title>
     
+        <!-- Latest compiled and minified CSS & JS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        
+        <link rel="Stylesheet" type="text/css" href="assets/style.css">
     </head>
 
-<body>
+    <body>
 
         <div class="container">
     
@@ -21,7 +30,7 @@
                 <br>
     
                 <div class="text-center">
-                    <a href="/reserve"><button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-credit-card"></span> Make Reservation</button></a>
+                    <a href="/reserve.html"><button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-credit-card"></span> Make Reservation</button></a>
                     <a href="/"><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button></a>
                 </div>
             </div>
@@ -50,6 +59,9 @@
             </div>
 
             <script type="text/javascript">
+
+                // JAVASCRIPT FOR SENDING AND RECIEVING TABLE INFORMATION
+
                 $("#search-btn").on("click", function() {
                   var searchedTable = $("#table-search").val().trim();
           
@@ -72,7 +84,7 @@
                     }
                   });
                 });
-              </script>
+            </script>
     
     
             <footer class="footer">

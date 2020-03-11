@@ -24,21 +24,33 @@ app.get("/tables", function(req, res) {
     res.sendFile(path.join(__dirname, "tables.html"))
 })
 
-app.get("/api/reservations", function(req,res) {
+app.get("/api/tables", function(req,res) {
     return res.json(tables)
 })
 
 app.get("/api/waitlist", function(req, res) {
-    return res.jsoom(waitList)
+    return res.json(waitList)
+})
+//-------------------------------------------
+app.post("/api/tables", function(req,res) {
+    var newReservation = req.body
+if(tables.length <= 5){
+    tables.push(newReservation);
+}
+else{
+    waitList.push(newReservation)
+}
+res.json(newReservation)
+    
 })
 
-app.post("/reserve", function(req, res) { 
+app.post("/api/reserve", function(req, res) { 
     var newCustomer = req.body;
   
   
     console.log(newCustomer);
   
-    if (tables.length <= 4) {
+    if (tables.length < 5) {
         tables.push(newCustomer);
     }
     else {
@@ -51,3 +63,5 @@ app.post("/reserve", function(req, res) {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
+
+  
